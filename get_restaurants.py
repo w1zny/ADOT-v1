@@ -11,9 +11,10 @@ ws.title = "Germany"
 row = 1
 column_city = 1
 column_name = 2
+column_url = 3
 max_limit = 50
 
-total_restaurants = 500
+total_restaurants = 100
 
 germany = ["Berlin", "Frankfurt", "Munich"]
 restaurant_urls = []
@@ -36,7 +37,9 @@ for town in germany:
             restaurant_urls.append(q["url"])
             ws.cell(row=row, column=column_city, value=q["location"]["city"])
             ws.cell(row=row, column=column_name, value=q["name"])
+            ws.cell(row=row, column=column_url, value=q["url"])
             row += 1
 
         offset += max_limit
+
 wb.save(filename="germany.xlsx")
