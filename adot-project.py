@@ -14,14 +14,14 @@ column_name = 2
 column_url = 3
 max_limit = 50
 
-total_restaurants = 100
+total_restaurants_from_city = 100
 
 germany = ["Berlin", "Frankfurt", "Munich"]
 restaurant_urls = []
 
 for town in germany:
     offset = 0
-    while offset < total_restaurants:
+    while offset < total_restaurants_from_city:
 
         parameters = {
             "offset": offset,
