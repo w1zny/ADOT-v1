@@ -8,7 +8,10 @@ HEADERS = {
 
 cities = ["Berlin", "Frankfurt", "Munich"]
 
+#################################
+# toto si zmen na max
 total_restaurants_from_city = 100
+#################################
 
 row = 1
 column_city = 1
