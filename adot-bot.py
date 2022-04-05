@@ -5,27 +5,28 @@ API_KEY = "_9wB6XJ3OidqsnabVaUdwnBmx7aG7WqOrB_wvEh99lFl3WY6vkftuO0c4XNqSL3QKKvuB
 HEADERS = {
     "Authorization": "Bearer " + API_KEY,
 }
-wb = Workbook()
-ws = wb.active
-ws.title = "Germany"
+
+cities = ["Berlin", "Frankfurt", "Munich"]
+
+total_restaurants_from_city = 100
+
 row = 1
 column_city = 1
 column_name = 2
 column_url = 3
 max_limit = 50
 
-total_restaurants_from_city = 100
+for city in cities:
+    wb = Workbook()
+    ws = wb.active
+    ws.title = city
 
-germany = ["Berlin", "Frankfurt", "Munich"]
-restaurant_urls = []
-
-for town in germany:
     offset = 0
     while offset < total_restaurants_from_city:
 
         parameters = {
             "offset": offset,
-            "location": town,
+            "location": city,
             "limit": max_limit,
             "term": "Restaurants"
         }
@@ -34,7 +35,6 @@ for town in germany:
         query = response.json()["businesses"]
 
         for q in query:
-            restaurant_urls.append(q["url"])
             ws.cell(row=row, column=column_city, value=q["location"]["city"])
             ws.cell(row=row, column=column_name, value=q["name"])
             ws.cell(row=row, column=column_url, value=q["url"])
@@ -42,4 +42,4 @@ for town in germany:
 
         offset += max_limit
 
-wb.save(filename="germany.xlsx")
+    wb.save(filename=f"{city}.xlsx")
