@@ -6,7 +6,10 @@ HEADERS = {
     "Authorization": "Bearer " + API_KEY,
 }
 
+#################################
+# tu si daj jake miesta chces
 cities = ["Berlin", "Frankfurt", "Munich"]
+#################################
 
 #################################
 # toto si zmen na max
